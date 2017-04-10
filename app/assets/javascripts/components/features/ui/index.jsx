@@ -2,6 +2,7 @@ import ColumnsArea from './components/columns_area';
 import NotificationsContainer from './containers/notifications_container';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import LoadingBarContainer from './containers/loading_bar_container';
+import CommunityTimeline from '../community_timeline';
 import HomeTimeline from '../home_timeline';
 import Compose from '../compose';
 import TabsBar from './components/tabs_bar';
@@ -127,6 +128,7 @@ const UI = React.createClass({
       mountedColumns = (
         <ColumnsArea>
           <Compose withHeader={true} />
+          <CommunityTimeline trackScroll={false} noBackButton={true} />
           <HomeTimeline trackScroll={false} />
           <Notifications trackScroll={false} />
           {children}

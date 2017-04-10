@@ -27,6 +27,7 @@ let subscription;
 const CommunityTimeline = React.createClass({
 
   propTypes: {
+    useBackButton: React.PropTypes.bool,
     dispatch: React.PropTypes.func.isRequired,
     intl: React.PropTypes.object.isRequired,
     accessToken: React.PropTypes.string.isRequired,
@@ -80,11 +81,11 @@ const CommunityTimeline = React.createClass({
   },
 
   render () {
-    const { intl, hasUnread } = this.props;
+    const { intl, hasUnread, noBackButton } = this.props;
 
     return (
       <Column icon='users' active={hasUnread} heading={intl.formatMessage(messages.title)}>
-        <ColumnBackButtonSlim />
+        { noBackButton ? null : <ColumnBackButtonSlim /> }
         <StatusListContainer type='community' emptyMessage={<FormattedMessage id='empty_column.community' defaultMessage='The local timeline is empty. Write something publicly to get the ball rolling!' />} />
       </Column>
     );
